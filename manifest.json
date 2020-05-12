@@ -1,0 +1,34 @@
+// TODO: add correct configuration and icons
+
+{
+	"name": "Jira estimate summarizer",
+	"version": "1.0",
+	"description": "Adds UI to Jira Cloud next-gen projects that helps working with estimates",
+	"author": "Henrik Gunnarsson",
+	"background": {
+		"scripts": ["background.js"],
+		"persistent": false
+	},
+	"page_action" :
+	{
+		"default_icon" : "icon-19.png"
+	},
+	"content_scripts": [
+		{
+			"matches": ["xxx"],
+			"css": ["styles.css"],
+			"js": ["script.js"]
+		}
+	],
+	"permissions" : [
+		"declarativeContent",
+		"tabs",
+		"xxx"
+	],
+	"icons" : {
+		"19" : "icon-19.png",
+		"48" : "icon-48.png",
+		"128" : "icon-128.png"
+	},
+	"manifest_version": 2
+}
