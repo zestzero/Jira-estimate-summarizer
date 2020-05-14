@@ -1,26 +1,5 @@
-/* TODO: add config */
-
-chrome.runtime.onInstalled.addListener(function () {
-  chrome.declarativeContent.onPageChanged.removeRules(undefined, function() {
-	  
-	chrome.declarativeContent.onPageChanged.addRules([
-	  {
-		conditions: [
-		  new chrome.declarativeContent.PageStateMatcher({
-			pageUrl: { 
-				hostEquals: 'xxx.com', 
-				pathContains: 'xxx'
-			},
-		  })
-		],
-		actions: [ new chrome.declarativeContent.ShowPageAction() ]
-	  } 
-	]);
-  });  
-});
-
 chrome.tabs.onUpdated.addListener(function(tabId, changeInfo, tab) {
-	if(changeInfo.url.includes('xxx')) {
+	if(tab.url.includes('browse') && changeInfo.status === 'complete') {
   		injectScripts();
 	}
 });
