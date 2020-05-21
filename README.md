@@ -1,5 +1,5 @@
 # Jira-estimate-summarizer
-Chrome extension that adds UI to Jira Cloud next-gen projects that helps working with estimates
+Chrome extension that shows estimate summaries and percentage done (base on estimates) in the epics details in Jira Cloud, next-gen projects.
 
 <img src="/screenshot.png" alt="" width="90%">
 
