@@ -1,8 +1,7 @@
 # Jira-estimate-summarizer
 Chrome extension that adds UI to Jira Cloud next-gen projects that helps working with estimates
 
-// TODO: add screenshot
-<!-- <img src="/screenshot with instructions.png" alt="" width="90%"> -->
+<img src="/screenshot.png" alt="" width="90%">
 
 ## Why
 
