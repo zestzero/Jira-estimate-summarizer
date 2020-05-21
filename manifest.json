@@ -1,7 +1,7 @@
 {
 	"name": "Jira estimate summarizer",
 	"version": "1.0",
-	"description": "Adds UI to Jira Cloud next-gen projects that helps working with estimates",
+	"description": "Shows estimate summaries and percentage done (base on estimates) in the epics details in Jira Cloud, next-gen projects",
 	"author": "Henrik Gunnarsson",
 	"background": {
 		"scripts": ["background.js"],
