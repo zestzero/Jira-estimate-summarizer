@@ -81,13 +81,14 @@
 
     function getTemplate() {
         return `
-            <div class="chip todo">
+            <div class="description">Story point estimates: </div>
+            <div class="chip todo" title="Not started - Story points">
                 ${sumToDo}
             </div>
-            <div class="chip in-progress">
+            <div class="chip in-progress" title="In progress - Story points">
                 ${sumInProgress}
             </div>
-            <div class="chip done">
+            <div class="chip done" title="Done - Story points">
                 ${sumDone}
             </div>
         `.trim();
