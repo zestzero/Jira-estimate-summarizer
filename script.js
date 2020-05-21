@@ -6,11 +6,19 @@
     let totalSum = 0;
 
     if (isViewingEpic) {
-        let estimateElements = document.querySelectorAll('.biONaI');
+        const issueContainers = document.querySelectorAll("[data-rbd-draggable-context-id]");
 
-        estimateElements.forEach(element => {
-            const estimate = Number(element.innerHTML);
-            const taskStatus = getTaskStatus(element);
+        issueContainers.forEach(container => {
+            const estimateChip = container.querySelector("button").previousSibling;
+            let estimate = 0;
+            let taskStatus;
+
+            if (!estimateChip) {
+                return;
+            }
+
+            estimate = Number(estimateChip.innerText);
+            taskStatus = getTaskStatus(container);
             
             totalSum += estimate;
 
@@ -27,28 +35,22 @@
             }
         });
 
-        render();
+        renderSummary();
     }
 
-    function getTaskStatus(estimateElement) {
-        const estimateContinerElement = estimateElement.closest("[role = 'button']");
-        const statusContinerElement = estimateContinerElement.nextSibling;
-        const statusChipElement = statusContinerElement.querySelector('.sc-iqtXtF');
-        const statusChipElementClassName = statusChipElement ? statusChipElement.className : null;
+    function getTaskStatus(issueContainer) {
         let status = 'unknown';
 
-        if (!statusChipElementClassName) {
-            return status;
-        }
+        const chipBackgroundColor = getComputedStyle(issueContainer.querySelector('[data-test-id *= "status"]').firstChild).backgroundColor;
 
-        switch (statusChipElementClassName) {
-            case 'sc-iqtXtF bLcNXH':
+        switch (chipBackgroundColor) {
+            case 'rgb(222, 235, 255)':
                 status = 'TODO'
                 break;
-            case 'sc-iqtXtF kYUniW':
+            case 'rgb(223, 225, 230)':
                 status = 'IN_PROGRESS'
                 break;
-            case 'sc-iqtXtF dSBJWL':
+            case 'rgb(227, 252, 239)':
                 status = 'DONE'
                 break;
         }
@@ -56,24 +58,26 @@
         return status;
     }
 
-    function render() {
+    function renderSummary() {
         const container = document.createElement('div');
-        const siblingToRenderTarget = document.querySelector('.eCEoiG');
+        const siblingToRenderTarget = document.querySelector("[data-test-id *= 'progress-bar']");
         container.innerHTML = getTemplate();
         container.className = 'estimate-summary';
 
-        siblingToRenderTarget.parentNode.insertBefore(container, siblingToRenderTarget.nextSibling);
+        if (siblingToRenderTarget) {
+            siblingToRenderTarget.parentNode.insertBefore(container, siblingToRenderTarget.nextSibling);
+        }
     }
 
     function getTemplate() {
         return `
-            <div class="biONaI todo">
+            <div class="chip todo">
                 ${sumToDo}
             </div>
-            <div class="biONaI in-progress">
+            <div class="chip in-progress">
                 ${sumInProgress}
             </div>
-            <div class="biONaI done">
+            <div class="chip done">
                 ${sumDone}
             </div>
         `.trim();
