@@ -4,8 +4,17 @@
     let sumInProgress = 0;
     let sumDone = 0;
     let totalSum = 0;
+    let percentageDone = 0;
 
     if (isViewingEpic) {
+        countEstimates();
+        countPercentageDone();
+
+        renderSummary();
+        renderPercentageDone();
+    }
+
+    function countEstimates() {
         const issueContainers = document.querySelectorAll("[data-rbd-draggable-context-id]");
 
         issueContainers.forEach(container => {
@@ -34,8 +43,6 @@
                     break;
             }
         });
-
-        renderSummary();
     }
 
     function getTaskStatus(issueContainer) {
@@ -58,6 +65,9 @@
         return status;
     }
 
+    function countPercentageDone() {
+        percentageDone = Math.ceil((sumDone / totalSum) * 100);
+    }
     function renderSummary() {
         const container = document.createElement('div');
         const siblingToRenderTarget = document.querySelector("[data-test-id *= 'progress-bar']");
@@ -81,5 +91,18 @@
                 ${sumDone}
             </div>
         `.trim();
+    }
+
+    function renderPercentageDone() {
+        const renderTarget = document.querySelector("[data-test-id *= 'progress-bar']").parentElement.nextSibling;
+        const container = document.createElement('span');
+        
+        container.innerText = `${percentageDone}% Done`;
+        container.className = 'estimate-percentage-done';
+
+        if (renderTarget) {
+            renderTarget.style = 'display: flex; flex-direction: column';
+            renderTarget.appendChild(container);
+        }
     }
 })()
