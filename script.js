@@ -68,41 +68,45 @@
     function countPercentageDone() {
         percentageDone = Math.ceil((sumDone / totalSum) * 100);
     }
-    function renderSummary() {
-        const container = document.createElement('div');
-        const siblingToRenderTarget = document.querySelector("[data-test-id *= 'progress-bar']");
-        container.innerHTML = getTemplate();
-        container.className = 'estimate-summary';
 
-        if (siblingToRenderTarget) {
-            siblingToRenderTarget.parentNode.insertBefore(container, siblingToRenderTarget.nextSibling);
+    function renderSummary() {
+        const progressBarElement = document.querySelector("[data-test-id *= 'progress-bar']");
+        const siblingToRenderTarget = progressBarElement.parentElement.parentElement;
+        const container = document.createElement('div');
+
+        container.innerHTML = getSummaryTemplate();
+        container.className = 'estimates';
+        
+        if (progressBarElement) {
+            siblingToRenderTarget.parentElement.insertBefore(container, siblingToRenderTarget.nextSibling);
         }
     }
 
-    function getTemplate() {
+    function getSummaryTemplate() {
         return `
-            <div class="description">Story point estimates: </div>
-            <div class="chip todo" title="Not started - Story points">
-                ${sumToDo}
-            </div>
-            <div class="chip in-progress" title="In progress - Story points">
-                ${sumInProgress}
-            </div>
-            <div class="chip done" title="Done - Story points">
-                ${sumDone}
+            <div class="estimate-summary">
+                <div class="description">Story point estimates:</div>
+                <div class="chip todo" title="Not started - Story points">
+                    ${sumToDo}
+                </div>
+                <div class="chip in-progress" title="In progress - Story points">
+                    ${sumInProgress}
+                </div>
+                <div class="chip done" title="Done - Story points">
+                    ${sumDone}
+                </div>
             </div>
         `.trim();
     }
 
     function renderPercentageDone() {
-        const renderTarget = document.querySelector("[data-test-id *= 'progress-bar']").parentElement.nextSibling;
+        const renderTarget = document.querySelector(".estimate-summary");
         const container = document.createElement('span');
         
         container.innerText = `${percentageDone}% Done`;
         container.className = 'estimate-percentage-done';
 
         if (renderTarget) {
-            renderTarget.style = 'display: flex; flex-direction: column';
             renderTarget.appendChild(container);
         }
     }
