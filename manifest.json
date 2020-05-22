@@ -1,23 +1,12 @@
 {
 	"name": "Jira epic estimates summarizer",
 	"version": "1.0.1",
-	"description": "Shows estimates summaries and percentage done (base on estimates) in the epics details in Jira cloud next-gen projects",
+	"description": "Shows estimates summaries and percentage done (based on estimates) in the epics details in Jira cloud next-gen projects",
 	"author": "Henrik Gunnarsson",
 	"background": {
 		"scripts": ["background.js"],
 		"persistent": false
 	},
-	"page_action" :
-	{
-		"default_icon" : "icon-32x32.png"
-	},
-	"content_scripts": [
-		{
-			"matches": ["https://*.atlassian.net/browse/*"],
-			"css": ["styles.css"],
-			"js": ["script.js"]
-		}
-	],
 	"permissions" : [
 		"tabs",
 		"https://*.atlassian.net/browse/*"
