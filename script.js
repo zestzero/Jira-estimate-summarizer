@@ -46,15 +46,15 @@
     }
 
     function getTaskStatus(issueContainer) {
-        let status = 'unknown';
+        let status = 'UNKNOWN';
 
-        const chipBackgroundColor = getComputedStyle(issueContainer.querySelector('[data-test-id *= "status"]').firstChild).backgroundColor;
+        const statusLabelBackgroundColor = getComputedStyle(issueContainer.querySelector('[data-test-id *= "status"]').firstChild).backgroundColor;
 
-        switch (chipBackgroundColor) {
-            case 'rgb(222, 235, 255)':
+        switch (statusLabelBackgroundColor) {
+            case 'rgb(223, 225, 230)':
                 status = 'TODO'
                 break;
-            case 'rgb(223, 225, 230)':
+            case 'rgb(222, 235, 255)':
                 status = 'IN_PROGRESS'
                 break;
             case 'rgb(227, 252, 239)':
