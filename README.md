@@ -11,5 +11,4 @@ This extension adds the same summary for epic details so you can get a much more
 
 ## Install
 
-// TODO: add link to chrome web store
-<!-- <a href="https://chrome.google.com/webstore/detail/github-compare-helper/cioiakfpohjbldapjdenhmdenmdcdigd">Press here</a> -->
+<a href="https://chrome.google.com/webstore/detail/mihnkiakmkpgfclepjggmonpaikohfcp/publish-accepted?authuser=0&hl=sv">Press here</a>
