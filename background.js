@@ -1,10 +1,10 @@
 chrome.tabs.onUpdated.addListener(function(tabId, changeInfo, tab) {
 	if(tab.url.includes('atlassian.net/browse/') && changeInfo.status === 'complete') {
-  		injectScripts();
+  		injectScripts(tabId);
 	}
 });
 
-function injectScripts() {
-	chrome.tabs.executeScript({file: "script.js"});
-	chrome.tabs.insertCSS({file: "styles.css"});
+function injectScripts(tabId) {
+	chrome.tabs.executeScript(tabId, {file: "script.js"});
+	chrome.tabs.insertCSS(tabId, {file: "styles.css"});
 }

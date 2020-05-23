@@ -1,9 +1,9 @@
-let isViewingEpic = document.querySelector("[alt = 'Epic']");
-let sumToDo = 0;
-let sumInProgress = 0;
-let sumDone = 0;
-let totalSum = 0;
-let percentageDone = 0;
+var isViewingEpic = document.querySelector("[alt = 'Epic']");
+var sumToDo = 0;
+var sumInProgress = 0;
+var sumDone = 0;
+var totalSum = 0;
+var percentageDone = 0;
 
 if (isViewingEpic) {
     countEstimates();
