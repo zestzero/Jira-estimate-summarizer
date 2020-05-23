@@ -65,6 +65,11 @@ function getTaskStatus(issueContainer) {
 }
 
 function countPercentageDone() {
+    if (totalSum === 0) {
+        percentageDone = 0;
+        return;
+    }
+    
     percentageDone = Math.ceil((sumDone / totalSum) * 100);
 }
 
