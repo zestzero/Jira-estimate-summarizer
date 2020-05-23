@@ -1,6 +1,6 @@
 {
 	"name": "Jira epic estimates summarizer",
-	"version": "1.0.1",
+	"version": "1.0.2",
 	"description": "Shows estimates summaries and percentage done (based on estimates) in the epics details in Jira cloud next-gen projects",
 	"author": "Henrik Gunnarsson",
 	"background": {
